@@ -2,6 +2,13 @@ package main
 
 import "fmt"
 
+// if 支持一个初始化语句,如：
+// if a := 10; a == 10{
+// }else{   // else后面不可以有条件
+// }
+
+// if  else  else if
+
 //
 //const (
 //	TOP int = 10

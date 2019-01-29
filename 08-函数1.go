@@ -13,7 +13,12 @@ import "fmt"
 func A(a ...int) {
 	fmt.Println(a)
 }
-func Aa(a string, b ...int) { // 如果多个不定长变参类型不一样 那么不定长参数应该写在最后面
+
+// ...int 类型一样的不定长参数， ...type不定长参数类型
+// func Aa(args ...int){
+// 		fmt.Println(len(args))  // len() 获取参数的个数
+// }
+func Aa(a string, b ...int) { // 如果多个不定长变参类型不一样 那么不定长参数一定写在最后面
 	fmt.Println(a)
 	fmt.Println(b)
 }
@@ -50,6 +55,20 @@ func Bcc(b *int) { // 指针传递,可以改变值类型的值
 // 函数也是一种类型 可以变量接收
 func C() {
 	fmt.Println("func C()")
+}
+
+// 函数类型 可以通过type给函数类型起名
+type FuncType func(int int) int
+
+// a函数参数传递给b函数
+func mytest1(tmp ...int) {
+	for _, data := range tmp {
+		fmt.Printf("mytest1:%v \n", data)
+	}
+}
+func mytest2(args ...int) {
+	//mytest1(args ...)   // mytest2的值传递给mytest1
+	mytest1(args[:2]...) // 可以利用切片只取前两个参数 包括终位置本身
 }
 
 // 匿名函数的使用
@@ -89,4 +108,6 @@ func main() {
 	f := Cc(200)
 	fmt.Println(f(100))
 	fmt.Println(f(200))
+
+	mytest2(100, 200, 300)
 }
