@@ -5,6 +5,7 @@ package main
 
 import (
 	//o "fmt"  // 包的别名
+	//_"fmt"   // _ 表示使用空白标示符 可以不用这个包 但程序不报错
 	"fmt"
 )
 

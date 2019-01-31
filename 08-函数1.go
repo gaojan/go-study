@@ -75,9 +75,17 @@ func mytest2(args ...int) {
 var N = func() { fmt.Println("这是个匿名函数") }
 
 // 闭包函数 作用是返回一个函数
+// 闭包函数捕获了和它在同一作用域的其他常量和变量
 func Cc(x int) func(int) int { // 外部函数返回内部函数，内部函数返回一个int
 	return func(y int) int {
 		return x + y
+	}
+}
+func test01() func() int {
+	var x int // 没有初始化 值为0
+	return func() int {
+		x++
+		return x * x
 	}
 }
 
@@ -108,6 +116,14 @@ func main() {
 	f := Cc(200)
 	fmt.Println(f(100))
 	fmt.Println(f(200))
+	//闭包函数返回一个匿名函数，通过f来调用返回的匿名函数
+	// 它不关心这些捕获了的变量和常量是否已经超出了作用域，所以只有闭包还在使用它，这些变量就还会存在
+	f1 := test01()
+	fmt.Println(f1()) // 1
+	fmt.Println(f1()) // 4
+	fmt.Println(f1()) // 9
+	fmt.Println(f1()) // 16
+	fmt.Println(f1()) // 25
 
 	mytest2(100, 200, 300)
 }
