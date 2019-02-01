@@ -5,6 +5,7 @@ import (
 )
 
 // go 没有class 代替来class的位置 但没有class的功能 没有继承的概念
+// 结构体是一种聚合的数据类型，它是由一系列具有相同类型或不同类型的数据构成的数据集合。
 //struct定义： type <name> struct{}
 
 // struct 定义
@@ -47,7 +48,7 @@ type Test2 struct {
 }
 
 func main() {
-	a := person{
+	a := person{ // 初始化 指定成员初始化 没有初始化的成员自动赋值0
 		Name: "jack", // 跟下面 两种写法
 		Age:  20,
 	} // 有点类似类的实例化
@@ -65,11 +66,12 @@ func main() {
 	aa.Contact.City = "shenzhen"
 	fmt.Println(aa)
 
-	c := pers{} // c 也是pers类型
+	c := pers{} // c 也是pers类型  相同类型的结构体可以相互赋值
 	c = aa
 	fmt.Printf("c: %v \n", c)
 
 	// 匿名结构 的定义
+	// 结构体指针变量初始化
 	b := &struct { // 加& 变成指针 取地址
 		Name string
 		Age  int
@@ -85,6 +87,20 @@ func main() {
 	s.Sex = 1 // 跟上面写法类同
 	fmt.Println(t)
 	fmt.Println(s)
+
+	// 通过指针操作成员:方法一，使用*
+	st := student{}
+	pst := &st
+	fmt.Println("pst", *pst)
+	pst.Name = "gaojian" // pst.Name 和 (*pst.Name)完全等价
+	fmt.Println("Name:", pst)
+	(*pst).Name = "gaojian"
+	fmt.Println("Name:", pst)
+	// 通过指针操作成员:方法一，使用new()重新申请一个内存地址
+	pst2 := new(student)
+	pst2.Name = "gaogao"
+	pst2.Age = 20
+	fmt.Println("pst2:", pst2)
 
 	tes := Test2{Name: "test2", Test1: Test1{Name: "test1"}}
 	fmt.Println(tes)
