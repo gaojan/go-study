@@ -41,7 +41,7 @@ func ReadFile(path string) {
 	fmt.Printf("文件长度为：%d, 文件内容为：%v \n", i, string(data[:i]))
 }
 
-// 没次读取一行
+// 每次读取一行
 func ReadBufioFile(path string) {
 	// 打开文件
 	f, err := os.Open(path)
