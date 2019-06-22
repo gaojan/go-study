@@ -29,12 +29,12 @@ func main() {
 	//}
 
 	//九九乘法表
-	//for i:=1; i<TOP; i++ {
-	//	for j := 1; j <= i; j++ {
-	//		fmt.Printf("%d * %d=%d  ", i, j, i*j)
-	//	}
-	//	fmt.Println()
-	//}
+	for i := 1; i < 10; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%d * %d=%d  ", i, j, i*j)
+		}
+		fmt.Println()
+	}
 
 	// if语句中 局部变量的作用域
 	a := 10

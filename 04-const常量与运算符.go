@@ -6,7 +6,7 @@ import "fmt"
 // >>  <<
 //例子 运算符实现计算机储存单位的枚举
 const (
-	B float64 = 1 << (iota * 10)
+	B float64 = 2 << (iota * 10)
 	KB
 	MB
 	GB
