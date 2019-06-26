@@ -25,7 +25,7 @@ func main() {
 	p.Apd()
 	fmt.Println(p)
 
-	// 匿名结构图
+	// 匿名结构体积
 	p1 := struct {
 		Name string
 		Age  uint8
