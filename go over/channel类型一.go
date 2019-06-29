@@ -1,10 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // 通道channel类型
 // 1、种类： 单向通道 双向通道 有缓冲通道 无缓冲通道
 // 2、特点： 先进先出
+
+func Hello(done chan bool) {
+	fmt.Println("Hello world goroutine is going to sleep")
+	time.Sleep(2 * time.Second)
+	fmt.Println("hello goroutine awake and going to write to done")
+	done <- true
+}
 
 func main() {
 	// 通道定义 用内建函数make 带缓存的通道
@@ -34,4 +44,11 @@ func main() {
 	v4 := <-receiver
 	fmt.Println(v4)
 
+	// 协程之间怎么通过通道通信
+	done := make(chan bool)
+	fmt.Println("main going to call hello go goroutine")
+	go Hello(done)
+	bl := <-done
+	fmt.Println("main function")
+	fmt.Println(bl)
 }
