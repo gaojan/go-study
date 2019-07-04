@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// 如果存在多个channel的时候，我们该如何操作呢，Go里面提供了一个关键字select，通过select可以监听channel上的数据流动。
 // select 语句用于在多个发送/接收信道操作中进行选择。select语句会一直阻塞，直到发送/接收操作准备就绪。
 // select语法与switch类似,所不同的是，这里的每个case语句都是信道操作。
 
